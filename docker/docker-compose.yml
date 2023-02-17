@@ -1,0 +1,63 @@
+version: "3.7"
+networks:
+  journal_service_network:
+    name: journal_service_network
+services:
+  nginx:
+    container_name: journal_service_nginx
+    image: nginx:alpine
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - php-fpm
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/ssl/server.pem:/etc/nginx/server.pem
+      - ./nginx/ssl/server.key:/etc/nginx/server.key
+      - ./nginx/ssl/cacert.pem:/etc/nginx/cacert.pem
+      - ./../:/var/www/html
+    extra_hosts:
+      - "localhost:host-gateway"
+    networks:
+      - journal_service_network
+  php-fpm:
+    container_name: journal_service
+    build:
+      context: ./php-fpm/
+      dockerfile: Dockerfile
+      args:
+        - UID=${UID:-1000}
+        - GID=${GID:-1000}
+    image: journal_service/php-fpm
+    depends_on:
+      - mysql
+    ports:
+      - "9000:9000"
+    volumes:
+      - ./../:/var/www/html
+    networks:
+      - journal_service_network
+  mysql:
+    container_name: journal_service_mysql
+    image: mysql
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=1
+      - MYSQL_DATABASE=database
+    networks:
+      - journal_service_network
+  phpmyadmin:
+    image: phpmyadmin:fpm-alpine
+    container_name: journal_service_phpmyadmin
+    ports:
+      - "8080:80"
+    environment:
+      - PMA_HOST=mysql
+      - PMA_PORT=3306
+      - PMA_ARBITRARY=1
+    depends_on:
+      - mysql
+    networks:
+      - journal_service_network
