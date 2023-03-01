@@ -1,0 +1,73 @@
+openapi: 3.0.3
+info:
+  title: Документация API сервиса Рынка
+  description: Документация API сервиса Рынка
+  version: 1.0.0
+servers:
+  - url: 'http://localhost:8401'
+    description: Сервер разработки
+paths:
+  '/main':
+    get:
+      description: Получение марок ТС для сервиса поиска (только легковой тип)
+      operationId: main
+      responses:
+        200:
+          description: Успешное выполнение запроса
+          content:
+            application/pdf:
+              schema:
+                type: string
+                format: binary
+
+  '/journal/set':
+    post:
+      summary: Сохранение записи
+      description: Получение количества ТС по параметрам
+      operationId: car-market-count
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/journal'
+      responses:
+        200:
+          description: Успешное выполнение запроса
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: boolean
+                  data:
+                    type: object
+                    properties:
+                      total:
+                        description: Всего найденно ТС
+                        type: integer
+                        minimum: 0
+                  errors:
+                    type: array
+                    items:
+                      type: string
+
+components:
+  schemas:
+    journal:
+      description: Запись в журнале
+      type: object
+      properties:
+        user_id:
+          description: id пользователя
+          type: integer
+          minimum: 1
+        service_id:
+          description: id услуги
+          type: integer
+          minimum: 1
+        date:
+          description: дата записи
+          type: string
+          format: datetime

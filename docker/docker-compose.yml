@@ -17,8 +17,6 @@ services:
       - ./nginx/ssl/server.key:/etc/nginx/server.key
       - ./nginx/ssl/cacert.pem:/etc/nginx/cacert.pem
       - ./../:/var/www/html
-    extra_hosts:
-      - "localhost:host-gateway"
     networks:
       - journal_service_network
   php-fpm:
@@ -38,6 +36,20 @@ services:
       - ./../:/var/www/html
     networks:
       - journal_service_network
+#  node:
+##    command: tail -F anything
+#    image: journal_service/node
+#    user: "node"
+#    build:
+#      context: ./node/
+#      dockerfile: Dockerfile
+#    container_name: journal_service_node
+#    volumes:
+#      - ./../frontend:/var/www/html/frontend
+#    ports:
+#      - "5174:5174"
+#    networks:
+#      - journal_service_network
   mysql:
     container_name: journal_service_mysql
     image: mysql

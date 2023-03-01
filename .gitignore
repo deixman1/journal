@@ -2,3 +2,5 @@
 /.idea/
 /logs/
 composer.lock
+/frontend/.vscode/
+/frontend/node_modules/

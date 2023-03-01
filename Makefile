@@ -6,9 +6,14 @@ else
 endif
 
 DOCKER_CMD_PHP_CLI := $(DOCKER_CMD) exec php-fpm
+DOCKER_CMD_NODE_CLI := $(DOCKER_CMD) exec node
 
 nginx-console:
-	$(DOCKER_CMD) exec nginx bash
+	$(DOCKER_CMD) exec nginx sh
+mysql-console:
+	$(DOCKER_CMD) exec mysql bash
+node-console:
+	$(DOCKER_CMD) exec node bash
 php-console:
 	$(DOCKER_CMD_PHP_CLI) bash
 up:
@@ -25,6 +30,10 @@ build:
 	$(DOCKER_CMD) up -d --force-recreate --build --remove-orphans
 composer-install:
 	$(DOCKER_CMD_PHP_CLI) composer install
+npm-install:
+	$(DOCKER_CMD_NODE_CLI) npm install
+npm-run-dev:
+	$(DOCKER_CMD_NODE_CLI) npm run dev
 composer-update:
 	$(DOCKER_CMD_PHP_CLI) composer update
 init-certificates:
