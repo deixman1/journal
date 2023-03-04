@@ -11,6 +11,6 @@ class MainPageController extends AbstractController
 {
     protected function action(ServerRequestInterface $request): ResponseInterface
     {
-        return $this->responseFactory->createResponseWithJsonData([]);
+        return $this->responseFactory->createResponseHtml('main.twig');
     }
 }

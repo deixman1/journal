@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Список услуг</title>
+    <style>
+        .center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app" class="center">
+    <form>
+        <h2>Services:</h2>
+        <ul>
+            {% for service in services %}
+                <li @click="selectService(service)">
+                    {{ service.name }}
+                </li>
+            {% endfor %}
+        </ul>
+        <h2>Selected Service:</h2>
+        <p>{{ selectedService.name }}</p>
+    </form>
+</div>
+
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            services: {{ services|json_encode|raw }},
+            selectedService: {}
+        },
+        methods: {
+            selectService: function(service) {
+                this.selectedService = service;
+            }
+        }
+    })
+</script>
+</body>
+</html>
