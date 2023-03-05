@@ -1,55 +1,109 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
-</script>
+import {RouterLink} from 'vue-router'</script>
 
 <template>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.png" />
+  <RouterLink to="/"><img alt="Vue logo" class="logo" src="@/assets/logo.png"/></RouterLink>
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
+  <div class="wrapper">
+    <ul>
+      <li style="background: rosybrown">
+        <RouterLink to="/enroll">
+          <figure>
+            <svg class="svg-icon" width="24" height="24" style="fill: white;"
+                 viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+              <path
+                  d="M565.638095 600.30781c-4.87619 24.380952-7.314286 51.2-12.190476 75.580952-2.438095 9.752381-12.190476 41.447619 12.190476 34.133333 31.695238-17.066667 60.952381-36.571429 90.209524-56.07619l-90.209524-53.638095z m14.628572-21.942858l87.771428 56.076191 153.6-224.304762-95.085714-63.390476-146.285714 231.619047z m160.914285-248.685714l90.209524 56.076191c19.504762-12.190476 26.819048-36.571429 17.066667-56.076191-19.504762-14.628571-39.009524-39.009524-63.390476-39.009524-7.314286 0-14.628571 2.438095-21.942857 7.314286-2.438095 2.438095-24.380952 29.257143-21.942858 31.695238z"/>
+              <path
+                  d="M551.009524 568.612571c4.87619-12.190476 9.752381-24.380952 17.066666-34.133333 12.190476-19.504762 148.72381-226.742857 151.161905-231.619048 2.438095-4.87619 9.752381-14.628571 9.752381-19.504761v-14.628572c2.438095-12.190476-2.438095-21.942857-9.752381-31.695238-9.752381-7.314286-19.504762-14.628571-31.695238-17.066667-9.752381-2.438095-17.066667-2.438095-26.819047 0H256c-19.504762 0-31.695238 21.942857-36.571429 39.009524v65.828572h24.380953c26.819048 0 48.761905 21.942857 48.761905 48.761904v12.190477c0 26.819048-21.942857 48.761905-48.761905 48.761904H219.428571v29.257143h24.380953c26.819048 0 48.761905 21.942857 48.761905 48.761905v12.190476c0 26.819048-21.942857 48.761905-48.761905 48.761905H219.428571v29.257143h24.380953c26.819048 0 48.761905 21.942857 48.761905 48.761905v12.190476c0 26.819048-21.942857 48.761905-48.761905 48.761904H219.428571v53.638096c0 19.504762 9.752381 48.761905 34.133334 48.761904h436.419047c14.628571-2.438095 24.380952-12.190476 31.695238-24.380952 4.87619-14.628571 7.314286-29.257143 4.876191-43.885714v-143.847619c-2.438095 2.438095-43.885714 65.828571-51.2 73.142857-7.314286 7.314286-19.504762 14.628571-29.257143 17.066667-21.942857 9.752381-82.895238 41.447619-114.590476 58.514285-4.87619 2.438095-12.190476 0-14.628572-4.87619-2.438095-2.438095-2.438095-4.87619 0-7.314286 9.752381-46.32381 24.380952-146.285714 29.257143-158.47619 2.438095-2.438095 2.438095-7.314286 4.876191-12.190477z m-173.104762-243.809523h195.047619c14.628571 0 24.380952 9.752381 24.380952 24.380952s-9.752381 24.380952-24.380952 24.380952h-195.047619c-14.628571 0-24.380952-9.752381-24.380952-24.380952 0-12.190476 9.752381-24.380952 24.380952-24.380952z m121.904762 177.980952h-121.904762c-14.628571 0-24.380952-9.752381-24.380952-24.380952s9.752381-24.380952 24.380952-24.380953h121.904762c12.190476 0 24.380952 9.752381 24.380952 21.942857v2.438096c0 14.628571-12.190476 24.380952-24.380952 24.380952z"/>
+              <path
+                  d="M243.809524 349.184H195.047619c-12.190476 0-24.380952 12.190476-24.380952 24.380952v12.190477c0 12.190476 12.190476 24.380952 24.380952 24.380952h48.761905c12.190476 0 24.380952-12.190476 24.380952-24.380952v-12.190477c0-12.190476-12.190476-21.942857-24.380952-24.380952z m0 141.409524H195.047619c-12.190476 0-24.380952 12.190476-24.380952 24.380952v12.190476c0 12.190476 12.190476 24.380952 24.380952 24.380953h48.761905c12.190476 0 24.380952-12.190476 24.380952-24.380953v-12.190476c0-12.190476-9.752381-24.380952-24.380952-24.380952z m0 138.971428H195.047619c-14.628571 0-24.380952 9.752381-24.380952 24.380953v12.190476c0 12.190476 12.190476 24.380952 24.380952 24.380952h48.761905c12.190476 0 24.380952-12.190476 24.380952-24.380952v-12.190476c0-12.190476-9.752381-24.380952-24.380952-24.380953z"/>
+            </svg>
+          </figure>
+          <span>Записаться</span>
+        </RouterLink>
+      </li>
+      <li style="background: #FF6B6C;">
+        <a href="https://instagram.com/lleksnails?igshid=ZDdkNTZiNTM=" target="_blank">
+          <figure>
+            <svg data-mode="stroke" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                 stroke-width="1" stroke="#000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="4" y="4" width="16" height="16" rx="4"></rect>
+              <circle cx="12" cy="12" r="3"></circle>
+              <path d="M16.5 7.5v.001"></path>
+            </svg>
+          </figure>
+          <span>Instagram</span>
+        </a>
+      </li>
+      <li style="background: #FF6B6C;">
+        <a href="https://www.avito.ru/user/2e67663fb621c9393115d30365b7502e/profile?gdlkerfdnwq=101&shopId=3466655&page_from=from_item_card&iid=2898367328"
+           target="_blank">
+          <figure>
+            <svg width="24" height="24" viewBox="-1 -1 34 30" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="10.595" cy="5.225" r="3.325" fill="#965EEB"></circle>
+              <circle cx="22.245" cy="7.235" r="7.235" fill="#0AF"></circle>
+              <circle cx="8.9" cy="18.6" r="8.9" fill="#04E061"></circle>
+              <circle cx="24.325" cy="21.005" r="5.375" fill="#FF4053"></circle>
+            </svg>
+          </figure>
+          <span>Avito</span>
+        </a>
+      </li>
+    </ul>
+  </div>
 </template>
 
 <style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
+
+figure {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  margin-right: 5px;
+}
+
+svg {
+  white-space: normal;
+  width: 42px;
+  height: 42px;
+  display: inline-block;
+  stroke: white;
+}
+
+ul {
+  display: flex;
+  padding: 0;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+li {
+  list-style: none;
+  margin-bottom: 1rem;
+  border-radius: 5px;
+}
+
+li a {
+  color: white;
+  display: flex;
+  flex-direction: row;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+li span {
+  color: white;
+  display: block;
+  text-align: center;
+  align-self: center;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .logo {
   display: block;
   margin: 0 auto 2rem;
-}
-
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-}
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
 }
 
 @media (min-width: 1024px) {
@@ -67,15 +121,6 @@ nav a:first-of-type {
     display: flex;
     place-items: flex-start;
     flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
   }
 }
 </style>
