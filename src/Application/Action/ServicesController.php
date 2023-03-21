@@ -11,26 +11,23 @@ class ServicesController extends AbstractController
 {
     protected function action(ServerRequestInterface $request): ResponseInterface
     {
-        return $this->responseFactory->createResponseHtml(
-            'services.twig',
+        return $this->responseFactory->createResponseWithJsonData(
             [
-                'services' => [
-                    [
-                        'name' => 'соснуть хуй 100 рублей',
-                    ],
-                    [
-                        'name' => 'соснуть хуй 100 рублей',
-                    ],
-                    [
-                        'name' => 'соснуть хуй 100 рублей',
-                    ],
-                    [
-                        'name' => 'соснуть хуй 100 рублей',
-                    ],
+                [
+                  'name'=> 'Маникюр 1',
+                  'price'=> 100,
+                  'time_executing'=> 3
                 ],
-                'selectedService' => [
-                    'name' => ''
+                [
+                    'name'=> 'Маникюр 2',
+                  'price'=> 100,
+                  'time_executing'=> 3
                 ],
+                [
+                    'name'=> 'Маникюр 3',
+                  'price'=> 100,
+                  'time_executing'=> 3
+                ]
             ]
         );
     }
