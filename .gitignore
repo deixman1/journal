@@ -4,3 +4,5 @@
 composer.lock
 /frontend/.vscode/
 /frontend/node_modules/
+/docker/.env
+/frontend/.env
